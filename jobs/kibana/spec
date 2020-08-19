@@ -18,7 +18,7 @@ consumes:
 properties:
   kibana.elasticsearch.protocol:
     description: "Protocl of elasticsearch master to send elasticsearch requests to (http or https)"
-    default: "http"
+    default: "https"
   kibana.elasticsearch.prefer_bosh_link:
     description: "Use bosh link to connect elasticsearch in prioriy to kibana.elasticsearch.host/port"
     default: true
@@ -60,3 +60,5 @@ properties:
     default: 50
   kibana.config_options:
     description: "Additional options to append to kibana.yml (YAML format)."
+  kibana.ssl.ca:
+    description: CA certificate
