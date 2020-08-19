@@ -27,7 +27,7 @@ describe 'kibana job' do
       expect(config['server.host']).to eq('0.0.0.0')
       expect(config['kibana.index']).to eq('.kibana')
       expect(config['kibana.defaultAppId']).to eq('discover')
-      expect(config['elasticsearch.hosts']).to eq(['http://10.0.8.2:9200'])
+      expect(config['elasticsearch.hosts']).to eq(['https://10.0.8.2:9200'])
       expect(config['elasticsearch.requestTimeout']).to eq(300000)
       expect(config['elasticsearch.shardTimeout']).to eq(30000)
     end
