@@ -6,6 +6,9 @@ templates:
   bin/post-start: bin/post-start
   bin/ctl_utils.sh: bin/ctl_utils.sh
   config/kibana.yml: config/kibana.yml
+  config/certs/ca.pem.erb: config/certs/ca.pem
+  config/certs/cert.pem.erb: config/certs/cert.pem
+  config/certs/key.pem.erb: config/certs/key.pem
 
 packages:
 - kibana
