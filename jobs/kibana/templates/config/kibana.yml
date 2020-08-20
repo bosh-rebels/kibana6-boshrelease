@@ -140,5 +140,5 @@ elasticsearch.shardTimeout: <%= p('kibana.shard_timeout') %>
 <% end %>
 
 <% if_p('kibana.ssl.ca') do |ca| %>
-elasticsearch.ssl.certificateAuthorities: ["certs/ca.pem"]
+elasticsearch.ssl.certificateAuthorities: ["/var/vcap/jobs/kibana/config/certs/ca.pem"]
 <% end %>
