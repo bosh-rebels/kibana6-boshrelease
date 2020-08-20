@@ -7,6 +7,7 @@ JOB_DIR=/var/vcap/jobs/kibana
 TMP_DIR=/var/vcap/sys/tmp/kibana
 
 PIDFILE=$RUN_DIR/kibana.pid
+RUNAS=vcap
 
 source $JOB_DIR/bin/ctl_utils.sh
 
@@ -14,6 +15,7 @@ case $1 in
 
   start)
     mkdir -p $RUN_DIR $LOG_DIR $STORE_DIR $TMP_DIR
+    chown -R $RUNAS:$RUNAS $RUN_DIR $LOG_DIR $STORE_DIR $TMP_DIR ${JOB_DIR}/config
 
     pid_guard $PIDFILE kibana
 
