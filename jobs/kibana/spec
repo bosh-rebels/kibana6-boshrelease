@@ -62,3 +62,7 @@ properties:
     description: "Additional options to append to kibana.yml (YAML format)."
   kibana.ssl.ca:
     description: CA certificate
+  kibana.ssl.cert:
+    description: Node certificate
+  kibana.ssl.key:
+    description: key
