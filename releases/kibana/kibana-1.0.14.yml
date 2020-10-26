@@ -1,0 +1,21 @@
+name: kibana
+version: 1.0.14
+commit_hash: 3364f64
+uncommitted_changes: false
+jobs:
+- name: kibana
+  version: 0a76d1d55c56969a1cf7735c7dfbd31abaf11c2b873382ae70186c66dd0a2c0b
+  fingerprint: 0a76d1d55c56969a1cf7735c7dfbd31abaf11c2b873382ae70186c66dd0a2c0b
+  sha1: sha256:218f91096dacc31ab8514ba2cc57a2ce7eaf76653f0eb1a6ad1e0f7e149dc6b8
+  packages:
+  - kibana
+packages:
+- name: kibana
+  version: 378c4b9923a11d07c8c38e9806d8fdf253eae43b3b51bb07b23ad3fd26a985ef
+  fingerprint: 378c4b9923a11d07c8c38e9806d8fdf253eae43b3b51bb07b23ad3fd26a985ef
+  sha1: sha256:9a01e57a818850dcdc6897228c6c5df6d7258d581ff98ab2d2db70b35b6e24e0
+  dependencies: []
+license:
+  version: bdcb1db1cfb88cafa4b6de84e812da4ed1b3a48653022e6eaa61369cd88da084
+  fingerprint: bdcb1db1cfb88cafa4b6de84e812da4ed1b3a48653022e6eaa61369cd88da084
+  sha1: sha256:c79cb69a34d970d2d202f7ea946ba7931aae8e8d0afb81ff8d4aa74deebc7372
