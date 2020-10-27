@@ -69,3 +69,5 @@ properties:
     description: Node certificate
   kibana.ssl.key:
     description: key
+  kibana.xpack.encryptedSavedObjects.encryptionKey:
+    description: "A string of 32 or more characters used to encrypt sensitive properties on alerts and actions before they’re stored in Elasticsearch"
