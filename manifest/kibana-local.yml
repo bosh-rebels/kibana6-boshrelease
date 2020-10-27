@@ -1,0 +1,57 @@
+
+---
+  name: kibana
+  releases:
+  - name: kibana
+    version: latest
+  
+  - name: elasticsearch
+    version: 1.0.12
+    url: https://github.com/bosh-rebels/elasticsearch-boshrelease/releases/download/1.0.12/elasticsearch-1.0.12.tgz
+    sha1: d518298a94fb363ea7afe6f0b6ef7f89a5f08274
+  
+  
+  stemcells:
+  - os: ubuntu-xenial
+    alias: xenial
+    version: latest
+  
+  instance_groups:
+  - name: kibana-and-elastic
+    jobs:
+    - name: elasticsearch
+      release: elasticsearch
+      properties:
+        elasticsearch:
+          node:
+            allow_master: true
+            allow_ingest: true
+            allow_data: true
+    - name: kibana
+      release: kibana
+      properties:
+        kibana:
+          xpack:
+            encryptedSavedObjects: 
+              encryptionKey: XuBnWuIDOxbXTL3uxTX6na1nRtqWsK5k
+    instances: 1
+    stemcell: xenial
+    update:
+      max_in_flight: 1
+      serial: true
+    azs:
+    - z1
+    vm_resources:
+      cpu: 1
+      ram: 2048
+      ephemeral_disk_size: 10240
+    persistent_disk: 1024
+    networks:
+    - name: default
+  
+  update:
+    canaries: 1
+    max_in_flight: 2
+    canary_watch_time: 30000-600000
+    update_watch_time: 5000-600000
+  
