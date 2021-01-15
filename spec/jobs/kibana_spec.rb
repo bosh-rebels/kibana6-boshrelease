@@ -33,17 +33,26 @@ describe 'kibana job' do
     end
 
     it 'makes a request to ES secure' do
-      config = YAML.safe_load(template.render({'kibana' => {
-        'elasticsearch' => {
-          'protocol' => 'https',
-          'port' => '443',
-          'username' => 'admin',
-          'password' => 'password',
+      config = YAML.safe_load(template.render({
+        'kibana' => {
+          'elasticsearch' => {
+            'protocol' => 'https',
+            'security' => {
+              'enabled' => true,
+              'username' => 'admin',
+              'password' => 'password'
+            },
+          },
+          'xpack' => {
+            'encryptedSavedObjects' => {
+              'encryptionKey' => 'something'
+            }
+          }
         }
-      }}, consumes: links))
-      expect(config['elasticsearch.hosts']).to eq(['https://10.0.8.2:443'])
-      expect(config['elasticsearch.customHeaders']['Authorization']).to eq('Basic YWRtaW46cGFzc3dvcmQ=')
-      expect(config['elasticsearch.requestHeadersWhitelist']).to eq([])
+      }, consumes: links))
+      expect(config['elasticsearch.hosts']).to eq(['https://10.0.8.2:9200'])
+      expect(config['elasticsearch.username']).to eq('admin')
+      expect(config['elasticsearch.password']).to eq('password')
     end
 
     it 'configures kibana.config_options' do
