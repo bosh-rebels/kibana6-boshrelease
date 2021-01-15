@@ -124,25 +124,27 @@ elasticsearch.hosts:
 <% elasticsearch_hosts.each do |host| -%>
 <%= "- #{p('kibana.elasticsearch.protocol')}://#{host}:#{p('kibana.elasticsearch.port')}" %>
 <% end -%>
-<% if_p("kibana.elasticsearch.username") do |username| %>
-# https://github.com/elastic/kibana/issues/11557
-elasticsearch.customHeaders:
-  Authorization: Basic <%= Base64.encode64(username + ":" + p("kibana.elasticsearch.password")) %>
-elasticsearch.requestHeadersWhitelist: []
+
+
+<% if p("kibana.elasticsearch.security.enabled") %>
+elasticsearch.username: "<%= p("kibana.elasticsearch.security.username") %>"
+elasticsearch.password: "<%= p("kibana.elasticsearch.security.password") %>"
+xpack.security.session.idleTimeout: "1h"
+xpack.security.session.lifespan: "30d"
+xpack.encryptedSavedObjects.encryptionKey: "<%= p('kibana.xpack.encryptedSavedObjects.encryptionKey') %>"
 <% end %>
+
 <% if_p("kibana.elasticsearch.ssl.verificationMode") do |verificationMode| %>
 elasticsearch.ssl.verificationMode: <%= verificationMode %>
 <% end %>
+
 elasticsearch.requestTimeout: <%= p('kibana.request_timeout') %>
 elasticsearch.shardTimeout: <%= p('kibana.shard_timeout') %>
+
 <% if_p('kibana.config_options') do |config_options| %>
 <%= config_options.to_yaml.gsub(/---/, '') %>
 <% end %>
 
 <% if_p('kibana.ssl.ca') do |ca| %>
 elasticsearch.ssl.certificateAuthorities: ["/var/vcap/jobs/kibana/config/certs/ca.pem"]
-<% end %>
-
-<% if_p('kibana.xpack.encryptedSavedObjects.encryptionKey') do |encryptionKey| %>
-xpack.encryptedSavedObjects.encryptionKey: <%= encryptionKey %>
 <% end %>

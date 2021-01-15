@@ -31,10 +31,14 @@ properties:
   kibana.elasticsearch.port:
     description: "Port of elasticsearch master to send elasticsearch requests to"
     default: "9200"
-  kibana.elasticsearch.username:
-    description: "The username of basic authentication on Elasticsearch"
-  kibana.elasticsearch.password:
-    description: "The password of basic authentication on Elasticsearch"
+  kibana.elasticsearch.security.enabled: 
+    description: This should be true if you're using xpack security module
+    default: false
+  kibana.elasticsearch.security.username:
+    description: "The username required to connect to a secure ES cluster"
+    default: kibana_system
+  kibana.elasticsearch.security.password:
+    description: "The username required to connect to a secure ES cluster"
   kibana.elasticsearch.ssl.verificationMode:
     description: Controls the verification of certificates presented by Elasticsearch. Valid values are "none", "certificate", and "full". "full" performs hostname verification, and "certificate" does not.
   kibana.port:
