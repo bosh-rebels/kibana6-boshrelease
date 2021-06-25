@@ -27,7 +27,7 @@ case $1 in
     echo "Starting kibana..." >>$LOG_DIR/kibana.stdout.log
     echo $$ > $PIDFILE
 
-    exec /var/vcap/packages/kibana/bin/kibana --allow-root \
+    exec /var/vcap/packages/kibana/bin/kibana \
       >>$LOG_DIR/kibana.stdout.log 2>>$LOG_DIR/kibana.stderr.log
     ;;
 

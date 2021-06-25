@@ -1,7 +1,7 @@
-name: kibana
+name: kibana6
 blobstore:
   provider: s3
   options:
-    bucket_name: kibana-boshrelease-blobstore
+    bucket_name: kibana6-boshrelease-blobstore
     region: eu-west-2
     credentials_source: env_or_profile

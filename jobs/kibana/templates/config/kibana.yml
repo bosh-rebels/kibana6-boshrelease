@@ -129,9 +129,6 @@ elasticsearch.hosts:
 <% if p("kibana.elasticsearch.security.enabled") %>
 elasticsearch.username: "<%= p("kibana.elasticsearch.security.username") %>"
 elasticsearch.password: "<%= p("kibana.elasticsearch.security.password") %>"
-xpack.security.session.idleTimeout: "1h"
-xpack.security.session.lifespan: "30d"
-xpack.encryptedSavedObjects.encryptionKey: "<%= p('kibana.xpack.encryptedSavedObjects.encryptionKey') %>"
 <% end %>
 
 <% if_p("kibana.elasticsearch.ssl.verificationMode") do |verificationMode| %>
