@@ -145,3 +145,7 @@ elasticsearch.shardTimeout: <%= p('kibana.shard_timeout') %>
 <% if_p('kibana.ssl.ca') do |ca| %>
 elasticsearch.ssl.certificateAuthorities: ["/var/vcap/jobs/kibana/config/certs/ca.pem"]
 <% end %>
+
+<% if_p('kibana.xpack.security.encryptionKey') do |key| %>
+xpack.security.encryptionKey: <%= key %>
+<% end %>

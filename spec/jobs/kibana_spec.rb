@@ -98,5 +98,16 @@ describe 'kibana job' do
         'https://10.0.8.5:443'
       ])
     end
+    it 'configures an encryption key' do
+      config = YAML.safe_load(template.render({'kibana' => {
+          'xpack' => {
+            'security' => {
+              'encryptionKey' => 'some_encryption_key'
+            }
+          }
+      }}, consumes: links))
+      puts config
+      expect(config['xpack.security.encryptionKey']).to eq('some_encryption_key')
+    end
   end
 end
